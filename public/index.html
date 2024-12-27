@@ -7,8 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bubbles">
+    <div class="bubble" style="left: 10%; animation-duration: 12s; animation-delay: 0s;"></div>
+    <div class="bubble" style="left: 30%; animation-duration: 15s; animation-delay: 2s;"></div>
+    <div class="bubble" style="left: 50%; animation-duration: 10s; animation-delay: 4s;"></div>
+    <div class="bubble" style="left: 70%; animation-duration: 18s; animation-delay: 1s;"></div>
+    <div class="bubble" style="left: 90%; animation-duration: 14s; animation-delay: 3s;"></div>
+  </div>
+
   <div class="container">
-    <h1>UUT Chatbot</h1>
+    <h1 style="text-align: center; color: white;">UUT Chatbot</h1>
     <div id="chat-box" class="chat-box"></div>
     <div class="input-container">
       <input id="message-input" class="message-input" type="text" placeholder="Type your message..." />
@@ -16,48 +24,7 @@
     </div>
   </div>
 
-  <script>
-    async function sendMessage() {
-      const messageInput = document.getElementById('message-input');
-      const chatBox = document.getElementById('chat-box');
-      const userMessage = messageInput.value.trim();
+  <script src="script.js"></script>
 
-      if (!userMessage) return;
-
-      // Display user message
-      const userMessageDiv = document.createElement('div');
-      userMessageDiv.className = 'message user';
-      userMessageDiv.textContent = `You: ${userMessage}`;
-      chatBox.appendChild(userMessageDiv);
-
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      try {
-        const response = await fetch('/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userMessage }),
-        });
-
-        const data = await response.json();
-
-        // Display bot response
-        const botMessageDiv = document.createElement('div');
-        botMessageDiv.className = 'message bot';
-        botMessageDiv.textContent = `Bot: ${data.reply}`;
-        chatBox.appendChild(botMessageDiv);
-
-        chatBox.scrollTop = chatBox.scrollHeight;
-      } catch (error) {
-        console.error('Error:', error);
-        const errorMessageDiv = document.createElement('div');
-        errorMessageDiv.className = 'message bot error';
-        errorMessageDiv.textContent = 'Error: Unable to get a response!';
-        chatBox.appendChild(errorMessageDiv);
-      }
-
-      messageInput.value = '';
-    }
-  </script>
 </body>
 </html>
