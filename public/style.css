@@ -10,7 +10,6 @@ body {
   overflow: hidden;
 }
 
-/* حباب‌های پس‌زمینه */
 .bubbles {
   position: absolute;
   top: 0;
@@ -43,7 +42,6 @@ body {
   }
 }
 
-/* تنظیمات کانتینر چت */
 .container {
   width: 90%;
   max-width: 800px;
@@ -107,7 +105,6 @@ body {
   transform: scale(1.05);
 }
 
-/* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
   .chat-box {
     height: 200px;
