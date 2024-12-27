@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hugging Face Chatbot</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>UUT Chatbot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Hugging Face Chatbot</h1>
+    <h1>UUT Chatbot</h1>
     <div id="chat-box" class="chat-box"></div>
     <div class="input-container">
       <input id="message-input" class="message-input" type="text" placeholder="Type your message..." />
@@ -24,6 +24,7 @@
 
       if (!userMessage) return;
 
+      // Display user message
       const userMessageDiv = document.createElement('div');
       userMessageDiv.className = 'message user';
       userMessageDiv.textContent = `You: ${userMessage}`;
@@ -40,6 +41,7 @@
 
         const data = await response.json();
 
+        // Display bot response
         const botMessageDiv = document.createElement('div');
         botMessageDiv.className = 'message bot';
         botMessageDiv.textContent = `Bot: ${data.reply}`;
